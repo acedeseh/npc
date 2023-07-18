@@ -49,7 +49,7 @@
 
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"></h3> <a class="btn float-right btn-xs btn btn-primary">Tambah User</a>
+        <h3 class="card-title"></h3> <a href="{{ route('add.user') }}" class="btn float-right btn-xs btn btn-primary">Tambah User</a>
       </div>
       <div class="card-body">
       
@@ -75,15 +75,14 @@
                     <th>Role</th>
                     <th style="width: 150px">Action</th>
                   </tr>
-                  @foreach ($user as $users)
+                  {{-- @foreach ($users as $user)
                   <tr>
-                    <td>{{$users->id}}</td>
-                    <td>{{$users->name}}</td>
-                    <td>{{$users->email}}</td>
-                    <td>{{$users->type}}</td>
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
                     <td><button>Edit</button></td>
                   </tr>
-                  @endforeach
+                  @endforeach --}}
                 </thead>
               </table>
       </div>

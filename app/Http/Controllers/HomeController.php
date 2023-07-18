@@ -26,21 +26,4 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    public function adminHome()
-    {
-        $data['user'] = User::all();
-        return view('adminHome', $data);
-    }
-  
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function headHome()
-    {
-        $data['karyawan'] = User::all()->where('type');
-        return view('headHome');
-    }
 }

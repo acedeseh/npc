@@ -22,7 +22,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'type',
     ];
 
     /**
@@ -45,7 +44,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function types(){
-        return $this->belongsTo(Type::class);
+    /**
+     * The roles that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function jobs()
+    {
+        return $this->belongsToMany(Job::class);
     }
 }

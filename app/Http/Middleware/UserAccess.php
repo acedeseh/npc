@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserAccess
@@ -16,10 +17,15 @@ class UserAccess
     public function handle(Request $request, Closure $next, $userType): Response
     {
 
-        if(auth()->user()->type_id == $userType){
-            return $next($request);
+        $roles = array_slice(func_get_args(), 2);
+
+        foreach ($roles as $role){
+            $user = Auth::user()->role;
+            if ($user == $role){
+                return $next($request);
+            }
         }
 
-        return response()->json(['You do not have permission to access for this page.', auth()->user()->type_id]);
+        return redirect('/');
     }
 }
