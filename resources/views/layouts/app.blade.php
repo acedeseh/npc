@@ -28,13 +28,19 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <style>
+        body {
+          background-image: url(https://products.unitedtractors.com/wp-content/uploads/2021/06/MicrosoftTeams-image-19.jpg);
+          background-size: 100%;
+        }
+      </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-warning bg-yellow shadow-sm">
+            <div class="container" class="custom-login-background">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img class="logo" src="dist/img/UT-Lofo.png" alt="Logo Perusahaan" style="width: 30%">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

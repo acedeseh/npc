@@ -1,5 +1,4 @@
-@include('templates.header')  
-@include('templates.sidebar')
+@include('templates.header')  @include('templates.sidebarAdmin')
 @section('content')
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -49,7 +48,7 @@
 
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"></h3> <a href="{{ route('add.user') }}" class="btn float-right btn-xs btn btn-primary">Tambah User</a>
+        <h3  class="card-title"></h3> <a href= "{{ route('add.user') }}" class="btn float-right btn-xs btn btn-primary">Tambah User</a>
       </div>
       <div class="card-body">
       
@@ -69,20 +68,32 @@
         <table class="table table-bordered">
                 <thead>                  
                   <tr>
-                    <th style="width: 10px">#</th>
+                    <th style="width: 10px">NNo/th>
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <th>NRP</th>
                     <th style="width: 150px">Action</th>
                   </tr>
-                  {{-- @foreach ($users as $user)
+                  @foreach ($users as $user)
                   <tr>
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
-                    <td><button>Edit</button></td>
+                    <td>
+                      @if ($user->type_id == 1)
+                      Admin
+                    @elseif ($user->type_id == 2)
+                      Head
+                    @elseif ($user->type_id == 3)
+                      User
+                    @endif
+                    </td>
+                    <td>{{$user->NRP}}</td>
+                    <td><button class="btn float-right btn-s btn btn-warning">Edit</button>
+                      <button class="btn float-left btn-s btn btn-danger">Delete</button></td>
                   </tr>
-                  @endforeach --}}
+                  @endforeach
                 </thead>
               </table>
       </div>

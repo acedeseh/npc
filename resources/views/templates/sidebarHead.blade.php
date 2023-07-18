@@ -25,7 +25,7 @@
             <a href="/home" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Produktivitas Karyawan
               </p>
             </a>
           </li>
@@ -34,29 +34,10 @@
             <a href="/routine" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
-                Routine
+                Data
               </p>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a href="/project" class="nav-link">
-              <i class="nav-icon fas fa-columns"></i>
-              <p>
-                Project
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="/routine" class="nav-link">
-              <i class="nav-icon fas fa-columns"></i>
-              <p>
-                Incidental
-              </p>
-            </a>
-          </li>
-          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -22,6 +22,7 @@ class AdminController extends Controller
 
     public function storeUser(Request $request){
         $user = new User();
+        $user->NRP = $request->NRP;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
@@ -29,5 +30,9 @@ class AdminController extends Controller
         $user->save();
         
         return back()->with('status', 'Form Data Has Been inserted');
+    }
+    public function create()
+    {
+        return view('create-user');
     }
 }

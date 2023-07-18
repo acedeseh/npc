@@ -1,5 +1,5 @@
 @include('templates.header')  
-@include('templates.sidebar')
+@include('templates.sidebarAdmin')
 @section('content')
 <div class="content-wrapper">
     <div class="content">
@@ -15,6 +15,10 @@
                         <form method="POST" action="{{ route('store.user') }}">
                             @csrf
                             <div class="card-body">
+                                <div class="form-group">
+                                    <label for="NRP">NRP</label>
+                                    <input type="text" name="NRP" class="form-control" placeholder="89214812" required>
+                                </div>
                                 <div class="form-group">
                                     <label for="name">Nama Karyawan</label>
                                     <input type="text" name="name" class="form-control" placeholder="Ex. Daniel" autocomplete="name" required>

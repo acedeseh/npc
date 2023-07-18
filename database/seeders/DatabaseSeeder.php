@@ -5,7 +5,6 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Models\Type;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,19 +17,19 @@ class DatabaseSeeder extends Seeder
             [
                'name'=>'Admin User',
                'email'=>'admin@npc.id',
-               'type_id'=> 1,
+               'role'=> 'Admin',
                'password'=> bcrypt('123456'),
             ],
             [
                'name'=>'Head User',
                'email'=>'head@npc.id',
-               'type_id'=> 2,
+               'role'=> 'Head',
                'password'=> bcrypt('123456'),
             ],
             [
                'name'=>'User',
                'email'=>'user@npc.id',
-               'type_id'=> 3,
+               'role'=> 'User',
                'password'=> bcrypt('123456'),
             ],
         ];
