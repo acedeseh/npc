@@ -29,7 +29,7 @@
                 <div class="icon">
                   <i class="fas fa-university"></i>
                 </div>
-                <a href="kelas/index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('show.routine') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -71,15 +71,18 @@
         </div>
         <div class="card-body">
           Selamat datang di halaman Productivity Calculator!
-
         </div>
 
         <div class="card-body">
-        Standardization Productivity ini memililki ciri khas untuk mengukur secara generalist.   
+       <p class=""> Aplikasi Project and Productivity Monitoring ini memililki ciri khas untuk memantau projek yang sedang dikerjakan serta mengukur produktivitas karyawan.    
         Alat ukur ini dapat mengukur lebih akurat dengan mempertimbangkan pekerjaan-perkerjaan yang bersifat incidental, 
         yaitu pekerjaan yang diluar job desk atau perkerjaan tidak terencanakan sebelumnya.
-
+       </p>
         </div>
+      </div>
+
+      <div class="card">
+        <img src="https://media.licdn.com/dms/image/C561BAQFwQbb9f-GLxw/company-background_10000/0/1597394072182?e=1689818400&v=beta&t=zfxchH8eAw8cus_2pS_DjFnyEsVjQT1MA1DWLdHbvGA" alt="">
       </div>
       <!-- /.card -->
     </section>

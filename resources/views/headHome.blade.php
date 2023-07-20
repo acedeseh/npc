@@ -62,8 +62,8 @@
           <div class="card">
             <div class="card-header">
               <div class="btn-group float-right">
-                <a  class="btn float-right btn-xs btn btn-info">Laporan Jadwal</a>
-                <a class="btn float-right btn-xs btn btn-warning">Lihat Laporan Jadwal</a></div>
+                <a  class="btn float-right btn-xs btn btn-info">Testing</a>
+                <a class="btn float-right btn-xs btn btn-warning">Test</a></div>
             </div>
             <div class="card-body">
     
@@ -98,6 +98,9 @@
             </div>
       </div>
       <!-- /.card -->
+      <div class="card">
+        <img src="https://media.licdn.com/dms/image/C561BAQFwQbb9f-GLxw/company-background_10000/0/1597394072182?e=1689818400&v=beta&t=zfxchH8eAw8cus_2pS_DjFnyEsVjQT1MA1DWLdHbvGA" alt="">
+      </div>
     </section>
     <!-- /.content -->
   </div>

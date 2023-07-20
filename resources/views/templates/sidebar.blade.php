@@ -11,7 +11,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="#" class="d-block">Welcome</a>
+          <a href="#" class="d-block">Welcome  {{ Auth::user()->name }} </a>
         </div>
       </div>
 
@@ -22,7 +22,7 @@
                with font-awesome or any other icon font library -->
 
           <li class="nav-item">
-            <a href="/home" class="nav-link">
+            <a href="/user" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -31,7 +31,7 @@
           </li>
           <li class="nav-header">Data</li>
           <li class="nav-item">
-            <a href="/routine" class="nav-link">
+            <a href="{{ route('show.routine') }}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Routine

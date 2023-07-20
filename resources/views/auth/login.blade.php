@@ -8,6 +8,14 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
+                    @if(Session::has('error'))
+                    <div class="card-body">
+                  <div class="alert alert-danger">
+                 {{ Session::get('error') }}
+                 </div>
+                </div>
+                 @endif
+                 
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -50,6 +58,12 @@
                                 </div>
                             </div>
                         </div>
+
+                        @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul> @foreach ($errors->all() as $error)<li>{{ $error }}</li> @endforeach </ul> 
+                    </div>
+                    @endif
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">

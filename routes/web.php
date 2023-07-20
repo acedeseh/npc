@@ -27,6 +27,8 @@ Route::get('/', function(){
     return view('auth.login');
 });
 
+Route::post('/', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
 Route::get('/home', function(){
     return view('home');
 });
@@ -34,7 +36,12 @@ Route::get('/home', function(){
 Route::controller(AdminController::class)->group(function() {
     Route::get('/admin', 'adminHome');
     Route::get('/admin/add-user', 'addUser')->name('add.user');
+    Route::get('/search/user','showAdminUsers')->name('search.user');
     Route::post('/admin/add-user', 'storeUser')->name('store.user');
+    Route::get('/admin/reset', 'resetAdminUsers')->name('reset.user');
+    Route::delete('/admin/{id}', 'deleteUser')->name('delete.user');
+    Route::get('/admin/edit/{id}', 'editUser')->name('edit.user');
+    Route::post('/admin/{id}/update', 'updateUser')->name('update.user');
 })->middleware('userAccess:admin');
 
 Route::controller(HeadController::class)->group(function() {
@@ -43,6 +50,19 @@ Route::controller(HeadController::class)->group(function() {
 
 Route::controller(UserController::class)->group(function() {
     Route::get('/user', 'userHome');
+    Route::get('/user/routine', 'routine')->name('user.routine');
+    Route::get('/edit/routine/{name}','editRoutine' )->name('edit.routine');
+    Route::get('/user/add', 'addRoutine')->name('add.routine');
+    Route::post('/user/add-routine', 'storeRoutine')->name('store.routine');
+    Route::post('/user/{name}/update', 'updateRoutine')->name('update.routine');
+    Route::get('/user/routine', 'showRoutine')->name('show.routine');
+    Route::delete('/user/routine/delete/{id}','deleteRoutine')->name('delete.routine');
+
+
+    Route::get('/user/project', 'project')->name('user.project');
+    
+    Route::get('/user/incidental',  'incidental')->name('user.incidental');
+
 })->middleware('userAccess:user');
 
   
