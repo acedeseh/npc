@@ -29,6 +29,7 @@
               </p>
             </a>
           </li>
+
           <li class="nav-header">Data</li>
           <li class="nav-item">
             <a href="{{ route('show.routine') }}" class="nav-link">
@@ -40,7 +41,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/project" class="nav-link">
+            <a href="{{ route('show.project') }}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Project
@@ -49,7 +50,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/routine" class="nav-link">
+            <a href="{{ route('show.incidental') }}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Incidental

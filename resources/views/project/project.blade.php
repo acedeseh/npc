@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Halaman Kegiatan Rutin</h1>
+            <h1>Halaman Kegiatan Project</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -25,7 +25,6 @@
             <div class="small-box bg-info">
               <div class="inner">
                 <p>Total Kegiatan Routine</p>
-                <h3>{{$JumlahKegiatanRoutine}}</h3>
               </div>
               <div class="icon">
                 <i class="fas fa-university"></i>
@@ -39,6 +38,7 @@
             <div class="small-box bg-warning">
               <div class="inner">
                  <p>Total Project</p>
+                 <h3>{{$JumlahKegiatanProject}}</h3>
               </div>
               <div class="icon">
               <i class="fas fa-chalkboard-teacher"></i>
@@ -68,11 +68,11 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title">Routine</h2>
+          <h2 class="card-title">Project</h2>
         </div>
         <div class="card-body">
-            Routine adalah Bagian mengisi data untuk kegiatan rutin yang dilakukan oleh karyawan, Maksud dari kegiatan Rutin disini adalah kegiatan yang bisa saja berulang setiap Hari, Minggu, Bulan, Ataupun Tahunan
-        </div>
+            Routine adalah Bagian mengisi data untuk Project yang dilakukan oleh karyawan,
+          </div>
 
         <section class="content">
           <div class="row">
@@ -87,6 +87,7 @@
                 <div class="card">
                 </div>
             <div class="card-body">
+            <div class="container-fluid">
 
               @if (session('status'))
               <div class="alert alert-success" role="alert">
@@ -94,7 +95,7 @@
               </div>
               @endif
 
-              <a href="{{route('add.routine')}}" class="btn float btn-s btn-primary">Tambah Kegiatan</a>
+              <a href= "{{ route('add.project') }}" class="btn float btn-s btn-primary">Tambah Kegiatan</a>
 
               <table class="table table-bordered">
                 <thead>
@@ -102,29 +103,37 @@
                         <th>Nama Kegiatan</th>
                         <th>Periode</th>
                         <th>Proses Time</th>
-                        <th>Frequency</th>
-                        <th>Quantity Plan</th>
-                        <th>Quantity Actual</th>
-                        <th>Bentuk</th>
                         <th>Total Persentase</th>
                         <th style="width: 150px">Action</th>
                     </tr>
-                    @foreach ($routine as $routines)
-                    @if ($routines->NRP == $logged_in_nrp)
+                    @foreach ($project as $projects)
+                    @if ($projects->NRP == $logged_in_nrp)
                     <tr>
-                        <td>{{ $routines->name }}</td>
-                        <td>{{ $routines->period }}</td>
-                        <td>{{ $routines->processtime }}</td>
-                        <td>{{ $routines->frequency }}</td>
-                        <td>{{ $routines->quantity_plan }}</td>
-                        <td>{{ $routines->quantity_actual }}</td>
-                        <td>{{ $routines->type }}</td>
-                        <td>{{ number_format(($routines->processtime * $routines->quantity_actual) / ($routines->processtime * $routines->quantity_plan) * 100, 2) }} </td>
+                        <td>{{ $projects->name }}</td>
+                        <td>{{ $projects->period }}</td>
+                        <td>{{ $projects->processtime }}</td>
+                        <td> 
+                          @php
+                          $totalPersentase = 0;
+                          if ($projects->period == 'Weekly') {
+                              $totalPersentase = (48 * $projects->processtime * 10 / 838);
+                          } elseif ($projects->period == 'Monthly') {
+                              $totalPersentase = (12 * $projects->processtime * 10 / 838);
+                          } elseif ($projects->period == 'Yearly') {
+                              $totalPersentase = (1 * $projects->processtime * 10 / 838);
+                          } elseif ($projects->period == 'Daily') {
+                              $totalPersentase = (233 * $projects->processtime * 10 / 838);
+                          }
+                          
+                          $totalPersentase = number_format($totalPersentase, 2); // Ubah ke format persentase dengan 2 angka desimal
+                          echo $totalPersentase . '%';
+                          @endphp
+                        </td>
                         <td>
-                        <a href= "{{ route('edit.routine', ['name' => $routines->name]) }}" class="btn float-left btn-s btn btn-warning">Edit</a>
+                        <a href= "{{ route('edit.project', ['name' => $projects->name]) }}" class="btn float-left btn-s btn btn-warning">Edit</a>
               
               <!-- Tombol Delete -->
-              <form action="{{ route('delete.routine', ['id' => $routines->id]) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus kegiatan ini?')">
+              <form action="{{ route('delete.project', ['id' => $projects->id]) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus kegiatan ini?')">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn float-right btn-s btn btn-danger">Delete</button>
@@ -139,6 +148,7 @@
             </table>
             </div>
       </div>
+    </div>
       <!-- /.card -->
       <div class="card">
         <img src="https://media.licdn.com/dms/image/C561BAQFwQbb9f-GLxw/company-background_10000/0/1597394072182?e=1689818400&v=beta&t=zfxchH8eAw8cus_2pS_DjFnyEsVjQT1MA1DWLdHbvGA" alt="">

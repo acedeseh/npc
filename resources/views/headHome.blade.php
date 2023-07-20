@@ -62,8 +62,8 @@
           <div class="card">
             <div class="card-header">
               <div class="btn-group float-right">
-                <a  class="btn float-right btn-xs btn btn-info">Testing</a>
-                <a class="btn float-right btn-xs btn btn-warning">Test</a></div>
+              <button class="btn-warning float"> Buat Laporan</button>
+              </div>
             </div>
             <div class="card-body">
     

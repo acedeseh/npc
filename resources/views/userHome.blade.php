@@ -24,7 +24,7 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <p>Total Kegiatan Routine</p>
+                  <p>Kegiatan Routine</p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-university"></i>
@@ -37,12 +37,12 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                   <p>Total Project</p>
+                   <p>Project</p>
                 </div>
                 <div class="icon">
                 <i class="fas fa-chalkboard-teacher"></i>
                 </div>
-                <a href="dosen/index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('show.project') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -50,7 +50,7 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <p>Total Kegiatan Incidental</p>
+                  <p>Incidental</p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-calendar"></i>

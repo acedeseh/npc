@@ -50,9 +50,10 @@ Route::controller(HeadController::class)->group(function() {
 
 Route::controller(UserController::class)->group(function() {
     Route::get('/user', 'userHome');
+
     Route::get('/user/routine', 'routine')->name('user.routine');
     Route::get('/edit/routine/{name}','editRoutine' )->name('edit.routine');
-    Route::get('/user/add', 'addRoutine')->name('add.routine');
+    Route::get('/user/add-r', 'addRoutine')->name('add.routine');
     Route::post('/user/add-routine', 'storeRoutine')->name('store.routine');
     Route::post('/user/{name}/update', 'updateRoutine')->name('update.routine');
     Route::get('/user/routine', 'showRoutine')->name('show.routine');
@@ -60,8 +61,21 @@ Route::controller(UserController::class)->group(function() {
 
 
     Route::get('/user/project', 'project')->name('user.project');
+    Route::get('/edit/project/{name}','editProject' )->name('edit.project');
+    Route::get('/user/add-p', 'addProject')->name('add.project');
+    Route::post('/user/add-project', 'storeProject')->name('store.project');
+    Route::post('/user/{name}/update', 'updateProject')->name('update.project');
+    Route::get('/user/project', 'showProject')->name('show.project');
+    Route::delete('/user/project/delete/{id}','deleteProject')->name('delete.project');
+
+    Route::get('/user/incidental', 'incidental')->name('user.incidental');
+    Route::get('/edit/incidental/{name}','editIncidental' )->name('edit.incidental');
+    Route::get('/user/add-i', 'addIncidental')->name('add.incidental');
+    Route::post('/user/add-incidental', 'storeIncidental')->name('store.incidental');
+    Route::post('/user/{name}/update', 'updateIncidental')->name('update.incidental');
+    Route::get('/user/incidental', 'showIncidental')->name('show.incidental');
+    Route::delete('/user/incidental/delete/{id}','deleteIncidental')->name('delete.incidental');
     
-    Route::get('/user/incidental',  'incidental')->name('user.incidental');
 
 })->middleware('userAccess:user');
 
