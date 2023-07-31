@@ -46,6 +46,7 @@ Route::controller(AdminController::class)->group(function() {
 
 Route::controller(HeadController::class)->group(function() {
     Route::get('/head', 'headHome');
+    Route::get('head/karyawan/detail/{NRP}','showKegiatanByNRP')->name('detail.kegiatan');
 })->middleware('userAccess:head');
 
 Route::controller(UserController::class)->group(function() {

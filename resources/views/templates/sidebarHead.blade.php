@@ -31,7 +31,7 @@
           </li>
           <li class="nav-header">Data</li>
           <li class="nav-item">
-            <a href="/routine" class="nav-link">
+            <a href="/head" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Data

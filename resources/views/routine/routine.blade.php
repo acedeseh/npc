@@ -109,6 +109,14 @@
                         <th>Total Persentase</th>
                         <th style="width: 150px">Action</th>
                     </tr>
+                  </thead>
+                  <tbody>
+
+                    @php
+                    $totalPersentase = 0;
+                    $totalKegiatan = 0;
+                    @endphp
+
                     @foreach ($routine as $routines)
                     @if ($routines->NRP == $logged_in_nrp)
                     <tr>
@@ -130,12 +138,21 @@
                 <button type="submit" class="btn float-right btn-s btn btn-danger">Delete</button>
             </form>
           </td>         
-    </tr>
-    @endif
-    @endforeach
-                </thead>
-                <tbody>
-                    </tr>
+        </tr>
+        @php
+        $currentPersentase = ($routines->processtime * $routines->quantity_actual) / ($routines->processtime * $routines->quantity_plan) * 100;
+        $totalPersentase += $currentPersentase;
+        $totalKegiatan++;
+        @endphp
+        @endif
+        @endforeach
+        @if ($totalKegiatan > 0)
+        <tr>
+          <th colspan="7">Rata-Rata Persentase</th>
+          <th colspan="2">{{ number_format($totalPersentase / $totalKegiatan, 2) }}%</th>
+        </tr>
+        @endif
+                  </tbody>
             </table>
             </div>
       </div>

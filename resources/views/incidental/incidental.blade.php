@@ -142,11 +142,23 @@
     </tr>
     @endif
     @endforeach
-                </thead>
-                <tbody>
-                    </tr>
-            </table>
-            </div>
+    
+    @if ($JumlahKegiatanIncidental > 0)
+    @php
+    $rataRataTotalPersentase = $totalPersentase / $JumlahKegiatanIncidental;
+    @endphp
+    <tr>
+        <th colspan="3">Total Persentase</th>
+        <th colspan="2">
+            {{ number_format($rataRataTotalPersentase, 2) . '%' }}
+        </th>
+    </tr>
+    @endif
+    </thead>
+    <tbody>
+    </tr>
+    </table>
+    </div>
       </div>
     </div>
       <!-- /.card -->

@@ -106,7 +106,9 @@
                         <th>Total Persentase</th>
                         <th style="width: 150px">Action</th>
                     </tr>
-                    @foreach ($project as $projects)
+                </thead>
+                <tbody>
+                  @foreach ($project as $projects)
                     @if ($projects->NRP == $logged_in_nrp)
                     <tr>
                         <td>{{ $projects->name }}</td>
@@ -125,7 +127,7 @@
                               $totalPersentase = (233 * $projects->processtime * 10 / 838);
                           }
                           
-                          $totalPersentase = number_format($totalPersentase, 2); // Ubah ke format persentase dengan 2 angka desimal
+                          $totalPersentase = number_format($totalPersentase, 2);
                           echo $totalPersentase . '%';
                           @endphp
                         </td>
@@ -139,12 +141,22 @@
                 <button type="submit" class="btn float-right btn-s btn btn-danger">Delete</button>
             </form>
           </td>         
-    </tr>
-    @endif
-    @endforeach
-                </thead>
-                <tbody>
-                    </tr>
+         </tr>
+         @endif
+         @endforeach
+
+         @if ($JumlahKegiatanProject > 0)
+            @php
+            $rataRataTotalPersentase = $totalPersentase / $JumlahKegiatanProject;
+            @endphp
+            <tr>
+                <th colspan="3">Total Persentase</th>
+                <th colspan="2">
+                    {{ number_format($rataRataTotalPersentase, 2) . '%' }}
+                </th>
+            </tr>
+        @endif
+                </tbody>
             </table>
             </div>
       </div>

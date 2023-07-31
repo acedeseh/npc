@@ -25,11 +25,16 @@
               <div class="small-box bg-info">
                 <div class="inner">
                   <p>Total Karyawan</p>
+                  @php
+                  // Hitung jumlah karyawan dengan peran "User"
+                  $totalUsers = \App\Models\User::where('role', 'User')->count();
+                  @endphp
+                  <h3>{{ $totalUsers }}</h3>
                 </div>
                 <div class="icon">
                   <i class="fas fa-user"></i>
                 </div>
-                <a href="kelas/index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="/head" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -62,7 +67,7 @@
           <div class="card">
             <div class="card-header">
               <div class="btn-group float-right">
-              <button class="btn-warning float"> Buat Laporan</button>
+              <button class="btn float-left btn-s btn btn-warning"> Buat Laporan</button>
               </div>
             </div>
             <div class="card-body">
@@ -84,16 +89,43 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th style="width: 10px">#</th>
+                    <th style="width: 10px">NRP</th>
                     <th>Nama Karyawan</th>
-                    <th>Routine</th>
-                    <th>Project</th>
-                    <th>Incidental</th>
                     <th>Total Productivity</th>
+                    <th>status</th>
                     <th style="width: 150px">Action</th>
-                  </tr>
+                  <tr>
                 </thead>
-
+                <tbody>
+                  @foreach ($karyawanData as $karyawan)
+                    @php
+                      // Ambil nilai total presentase dari array berdasarkan NRP karyawan
+                      $presentase = floatval(str_replace('%', '', $karyawanPersentase[$karyawan->NRP]));
+                      $status = '';
+    
+                      // Tentukan status berdasarkan total presentase
+                      if ($presentase > 100) {
+                          $status = 'PRODUCTIVE';
+                          $statusClass = 'bg-success';
+                      } elseif ($presentase > 115) {
+                          $status = 'OVER PRODUCTIVE';
+                          $statusClass = 'bg-warning';
+                      } else {
+                          $status = 'LESS PRODUCTIVE';
+                          $statusClass = 'bg-danger';
+                      }
+                    @endphp
+                  <tr class="{{ $statusClass }}">
+                      <td>{{$karyawan->NRP}}</td>
+                      <td>{{ $karyawan->name }}</td>
+                      <td>{{ $karyawanPersentase[$karyawan->NRP] }}</td>
+                      <td>{{ $status }}</td>
+                      <td>
+                        <a href="{{ route('detail.kegiatan', ['NRP' => $karyawan->NRP]) }}" class="btn btn-info btn-sm">Lihat Detail</a>
+                      </td>
+                  </tr>
+                  @endforeach
+              </tbody>
               </table>
             </div>
       </div>
