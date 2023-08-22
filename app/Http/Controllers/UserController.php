@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Routine;
 use App\Models\Project;
 use App\Models\Incidental;
+use App\Models\Routineadd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -27,6 +28,8 @@ class UserController extends Controller
 
    public function storeRoutine(Request $request)
     {
+
+
     $routine = new Routine ();
     $routine->NRP = auth()->user()->NRP;
     $routine->name = $request->name;
@@ -40,6 +43,12 @@ class UserController extends Controller
 
     return redirect('user/routine')->with('status', 'Data Berhasil Ditambahkan');
     }
+
+    public function addRoutineadd()
+{
+    $routineNames = Addroutines::pluck('name', 'id');
+    return view('routine/addRoutine', compact('routineNames'));
+}
 
 
     public function editRoutine($name)

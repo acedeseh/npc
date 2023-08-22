@@ -42,6 +42,14 @@ Route::controller(AdminController::class)->group(function() {
     Route::delete('/admin/{id}', 'deleteUser')->name('delete.user');
     Route::get('/admin/edit/{id}', 'editUser')->name('edit.user');
     Route::post('/admin/{id}/update', 'updateUser')->name('update.user');
+
+    Route::get('/routineadd', 'routineaddHome');
+    Route::get('/routineadd/add-user', 'addRoutine')->name('add.routineadd');
+    Route::post('/routineadd/add-user', 'storeRoutineadd')->name('store.routineadd');
+    Route::delete('/routineadd/{id}', 'deleteRoutineadd')->name('delete.routineadd');
+    Route::get('/routineadd/edit/{id}', 'editRoutineadd')->name('edit.routineadd');
+    Route::post('/routineadd/{id}/update', 'updateRoutineadd')->name('update.routineadd');
+    
 })->middleware('userAccess:admin');
 
 Route::controller(HeadController::class)->group(function() {

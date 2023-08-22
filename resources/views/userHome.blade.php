@@ -82,7 +82,7 @@
       </div>
 
       <div class="card">
-        <img src="https://media.licdn.com/dms/image/C561BAQFwQbb9f-GLxw/company-background_10000/0/1597394072182?e=1689818400&v=beta&t=zfxchH8eAw8cus_2pS_DjFnyEsVjQT1MA1DWLdHbvGA" alt="">
+        <img src="https://media.licdn.com/dms/image/C561BAQFwQbb9f-GLxw/company-background_10000/0/1597394072182?e=1692957600&v=beta&t=Xvnng3HX1poTj4i9uAXSpFJaf-gcZSSQdDvV0MsbFuA" alt="">
       </div>
       <!-- /.card -->
     </section>

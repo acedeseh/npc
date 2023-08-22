@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Routineadd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -93,6 +94,84 @@ public function resetAdminUsers()
     // Lakukan pembaruan data
     $user->update($validatedData);
     return redirect('admin')->with('status', 'Data User telah diperbarui');
+    }
+
+
+
+    public function routineaddHome()
+    {
+        $jumlahRoutine = Routineadd::all()->count(); 
+
+        $routineadd = Routineadd::all();
+        return view('routineadd/masterRoutine', compact('routineadd', 'jumlahRoutine'));
+
+    }
+
+    public function showRoutineadd(Request $request)
+    {
+    $key = $request->input('key');
+    $users = User::where('name', 'LIKE', "%{$key}%")
+             ->orWhere('id-routine', 'LIKE', "%{$key}%")
+             ->get();
+             
+    $jumlahRoutine = Routineadd::all()->count(); 
+
+    $routineadd = Routineadd::all();
+    return view('routineadd/masterRoutine', compact('routineadd', 'jumlahRoutine'));
+    }
+
+public function resetRoutineadd()
+    {
+    $jumlahRoutine = Routineadd::all()->count(); 
+
+    $routineadd = Routineadd::all();
+    return view('routineadd/masterRoutine', compact('routineadd', 'jumlahRoutine'));
+    }
+
+    
+    public function addRoutine()
+    {
+        return view('routineadd/addRoutine');
+    }
+
+    public function storeRoutineadd (Request $request)
+    {
+        $routineadd = new Routineadd();
+        $routineadd->name = $request->name;
+        $routineadd->save();
+        
+        return redirect('routineadd')->with('status', 'Data Berhasil Ditambahkan');
+    }
+    
+    public function createRoutineadd()
+    {
+        return view('create-routineadd');
+    }
+
+    public function deleteRoutineadd($id)
+    {
+        Routineadd::findOrFail($id)->delete();
+    
+        return redirect('routineadd')->with('status', 'Data Berhasil telah dihapus');
+    }
+
+
+    public function editRoutineadd($id)
+    {
+    $routineadd = Routineadd::findOrFail($id);
+    return view('routineadd/editRoutine', compact('routineadd'));
+    }
+
+    public function updateRoutineadd(Request $request, $id)       
+    {
+    $routineadd = Routineadd::findOrFail($id);
+    // Lakukan validasi data yang diubah
+    $validatedData = $request->validate([
+        'name' => 'required',
+    ]);
+    // Lakukan pembaruan data
+    $routineadd->update($validatedData);
+    return redirect('routineadd')->with('status', 'Data telah diperbarui');
     }
     
 }

@@ -26,6 +26,7 @@ class HeadController extends Controller
     {
     // Ambil data karyawan dari tabel 'users'
     $karyawanData = User::where('role', '!=', 'Head')->where('role', '!=', 'Admin')->get();
+    
 
     // Array untuk menyimpan total persentase dari masing-masing karyawan
     $karyawanPersentase = [];

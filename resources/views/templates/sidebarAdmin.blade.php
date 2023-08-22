@@ -28,6 +28,15 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="/routineadd" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Master Data Routine
+              </p>
+            </a>
+          </li>
+
           
         </ul>
       </nav>

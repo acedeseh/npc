@@ -23,7 +23,12 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Nama Kegiatan</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Masukan Nama Kegiatan Rutin" required>
+                                    <select name="name" class="form-control" required>
+                                        <option value="">Pilih Nama Kegiatan</option>
+                                        @foreach(\App\Models\Routineadd::pluck('name', 'id') as $id => $name)
+                                            <option value="{{ $name }}">{{ $name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
